@@ -1,7 +1,5 @@
 package com.sbs.jsp.board.servlet;
 
-import com.sun.net.httpserver.HttpContext;
-import com.sun.net.httpserver.HttpsServer;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
