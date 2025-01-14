@@ -18,6 +18,18 @@ public class GugudanServlet extends HttpServlet {
     int dan = rq.getIntParam("dan", 9);
     int limit = rq.getIntParam("limit", 9);
 
+    rq.print("""
+        <div class="a"></div>
+        
+        <style>
+          .a {
+             width: 200px;
+             height: 200px;
+             background-color: red;
+          }
+        </style>
+        """);
+
     rq.print("<h1>== %d단 ==</h1>\n".formatted(dan));
 
     for(int i = 1; i <= limit; i++) {
