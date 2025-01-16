@@ -1,5 +1,7 @@
 package com.sbs.jsp.board.base;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -44,10 +46,24 @@ public class Rq {
     return value;
   }
 
+  public void setAttr(String attrName, Object value) {
+    req.setAttribute(attrName, value);
+  }
+
   public void print(String str) {
     try {
       resp.getWriter().append(str);
     } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void view(String path) {
+    RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
+
+    try {
+      requestDispatcher.forward(req, resp);
+    } catch (ServletException | IOException e) {
       throw new RuntimeException(e);
     }
   }
