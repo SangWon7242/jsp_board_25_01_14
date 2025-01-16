@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.sbs.jsp.board.base.Rq"%>
 
 <!-- 스클립틀릿 문법 -->
 <%
-int dan = Integer.parseInt(request.getParameter("dan"));
-int limit = Integer.parseInt(request.getParameter("limit"));
+Rq rq = new Rq(request, response);
 
-int a = 30;
-
-// out.println(a); // response.getWriter().append(a);
+int dan = rq.getIntParam("dan", 9);
+int limit = rq.getIntParam("limit", 9);
 %>
 
 
@@ -15,23 +14,3 @@ int a = 30;
 <% for(int i = 1; i <= limit; i++) { %>
   <div><%=dan%> * <%=i%> = <%=dan * i%></div>
 <% } %>
-
-<!-- 방식 1 -->
-<h1>
-  <%
-  out.println(a);
-  %>
-</h1>
-
-<!-- 방식 2 -->
-<h1>
-  <%=a%>
-</h1>
-
-<!-- 방식 3 -->
-<h1>30</h1>
-
-<!-- 콘솔창에 30 출력 -->
-<%
-System.out.println(a);
-%>
