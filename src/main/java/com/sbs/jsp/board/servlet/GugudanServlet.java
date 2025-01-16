@@ -21,7 +21,6 @@ public class GugudanServlet extends HttpServlet {
 
     req.setAttribute("dan", dan); // key, value
     req.setAttribute("limit", limit);
-    req.setAttribute("a", 10);
 
     // request에 정보를 담는다.
     // gugudan2.jsp 단에 나머지 작업을 위임
