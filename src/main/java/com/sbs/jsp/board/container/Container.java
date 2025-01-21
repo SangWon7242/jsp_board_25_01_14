@@ -15,7 +15,6 @@ public class Container {
   public static ArticleController articleController;
 
   static {
-
     articleRepository = new ArticleRepository();
 
     articleService = new ArticleService();
