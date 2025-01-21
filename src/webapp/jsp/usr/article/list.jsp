@@ -15,7 +15,7 @@
             ${article.id} 번 :
           </span>
           &nbsp;
-          <a href="detail?id=${article.id}">
+          <a href="detail/free/${article.id}">
             <span>
              ${article.subject}
             </span>
