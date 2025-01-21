@@ -3,14 +3,19 @@
 
 <h1>게시물 상세보기</h1>
 
-<div>
+<section class="article-detail">
   <div>
-    ID : ${article.id}
+    <div>
+      ID : ${article.id}
+    </div>
+    <div>
+      SUBJECT : ${article.subject}
+    </div>
+    <div>
+      CONTENT : ${article.content}
+    </div>
   </div>
   <div>
-    SUBJECT : ${article.subject}
+    <a href="list">리스트로 이동</a>
   </div>
-  <div>
-    CONTENT : ${article.content}
-  </div>
-</div>
+</section>
