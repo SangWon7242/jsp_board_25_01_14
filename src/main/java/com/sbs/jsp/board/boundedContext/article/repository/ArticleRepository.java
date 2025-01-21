@@ -4,6 +4,7 @@ import com.sbs.jsp.board.boundedContext.article.dto.Article;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 public class ArticleRepository {
@@ -14,7 +15,7 @@ public class ArticleRepository {
     articleList = new ArrayList<>();
 
     makeTestData();
-    
+
     // 게시물의 마지막 번호
     lastId = articleList.get(articleList.size() - 1).getId();
   }
@@ -43,5 +44,13 @@ public class ArticleRepository {
     articleList.add(article);
 
     return id;
+  }
+
+  public Article findById(int id) {
+    return articleList.stream().filter(
+            article -> article.getId() == id
+        )
+        .findFirst()
+        .orElse(null);
   }
 }

@@ -20,4 +20,8 @@ public class ArticleService {
   public long write(String subject, String content) {
     return articleRepository.write(subject, content);
   }
+
+  public Article findById(int id) {
+    return articleRepository.findById(id);
+  }
 }
