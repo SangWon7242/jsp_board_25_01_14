@@ -53,4 +53,12 @@ public class ArticleRepository {
         .findFirst()
         .orElse(null);
   }
+
+  public void delete(long id) {
+    Article article = findById(id);
+
+    if(article == null) return;
+
+    articleList.remove(article);
+  }
 }
