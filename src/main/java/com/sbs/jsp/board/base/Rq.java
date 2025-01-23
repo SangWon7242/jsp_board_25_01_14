@@ -110,6 +110,16 @@ public class Rq {
     return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
   }
 
+  public String getRoutedMethod() {
+    String method = getParam("_method", "");
+
+    if(!method.isEmpty()) {
+      return method.toUpperCase();
+    }
+
+    return req.getMethod();
+  }
+
   public long getLongPathValueByIndex(int index, int defaultValue) {
     String value = getPathValueByIndex(index, null);
 

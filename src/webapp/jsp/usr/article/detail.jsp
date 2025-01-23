@@ -33,10 +33,9 @@ request.setAttribute("pageTitle", pageTitle);
           <a href="/usr/article/modify/free/${article.id}" class="btn btn-outline btn-primary">
             수정
           </a>
-          <a onclick="if(confirm('정말 삭제하시겠습니까?')) $(this).next().submit();" class="btn btn-outline btn-secondary">
+          <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/${article.id}?_method=DELETE" class="btn btn-outline btn-secondary">
             삭제
           </a>
-          <form hidden method="POST" action="/usr/article/delete/free/${article.id}"></form>
         </div>
         <div class="flex-1 flex justify-end">
           <a href="/usr/article/list" class="btn btn-primary">
