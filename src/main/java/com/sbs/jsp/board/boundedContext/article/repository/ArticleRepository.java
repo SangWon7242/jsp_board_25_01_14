@@ -21,7 +21,7 @@ public class ArticleRepository {
 
   private void makeTestData() {
     // 스트림 문법
-    IntStream.rangeClosed(1, 5)
+    IntStream.rangeClosed(1, 10)
         .forEach(i ->
             articleList.add(new Article(i, "제목 %d".formatted(i), "내용 %d".formatted(i)))
         );
