@@ -58,6 +58,35 @@ public class Rq {
     }
   }
 
+  public void println(String str) {
+    print(str + "\n");
+  }
+
+  public void replace(String url, String msg) {
+    if(msg != null && !msg.trim().isEmpty()) {
+      println("""
+          <script>
+           alert('%s')
+          </script>
+          """.formatted(msg));
+    }
+
+    println("""
+          <script>
+           location.replace('%s');
+          </script>
+          """.formatted(url));
+  }
+
+  public void historyBack(String msg) {
+    println("""
+        <script>
+          alert('%s');
+          history.back();
+        </script>
+        """.formatted(msg));
+  }
+
   public void view(String path) {
     RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
 

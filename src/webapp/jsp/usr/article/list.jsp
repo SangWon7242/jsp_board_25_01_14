@@ -34,7 +34,7 @@ request.setAttribute("pageTitle", pageTitle);
             <tr>
               <th class="text-center">${article.id}</th>
               <td class="hover:text-red-500 hover:underline">
-                <a href="detail/free/${article.id}">
+                <a href="/usr/article/detail/free/${article.id}">
                   ${article.subject}
                 </a>
               </td>
@@ -45,7 +45,7 @@ request.setAttribute("pageTitle", pageTitle);
         </table>
       </div>
       <div class="flex justify-end">
-        <a href="write" class="btn btn-primary">게시물 작성</a>
+        <a href="/usr/article/write/free" class="btn btn-primary">게시물 작성</a>
       </div>
     </div>
   </div>
