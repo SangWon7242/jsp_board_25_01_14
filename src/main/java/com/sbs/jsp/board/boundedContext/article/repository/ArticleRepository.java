@@ -4,7 +4,6 @@ import com.sbs.jsp.board.boundedContext.article.dto.Article;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.IntStream;
 
 public class ArticleRepository {
@@ -60,5 +59,14 @@ public class ArticleRepository {
     if(article == null) return;
 
     articleList.remove(article);
+  }
+
+  public void modify(long id, String subject, String content) {
+    Article article = findById(id);
+
+    if(article == null) return;
+
+    article.setSubject(subject);
+    article.setContent(content);
   }
 }

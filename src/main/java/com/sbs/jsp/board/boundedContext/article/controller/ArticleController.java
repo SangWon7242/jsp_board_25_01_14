@@ -18,7 +18,12 @@ public class ArticleController {
     List<Article> articles = articleService.getArticles();
 
     if(articles.isEmpty()) {
-      rq.print("게시물이 존재하지 않습니다.");
+      rq.print("""
+          <script>
+            alert('게시물이 존재하지 않습니다.');
+            history.back();
+          </script>
+          """);
       return;
     }
 
@@ -35,14 +40,24 @@ public class ArticleController {
     String subject = rq.getParam("subject", "");
 
     if(subject.trim().isEmpty()) {
-      rq.print("제목을 입력해주세요.");
+      rq.print("""
+          <script>
+            alert('제목을 입력해주세요.');
+            history.back();
+          </script>
+          """);
       return;
     }
 
     String content = rq.getParam("content", "");
 
     if(content.trim().isEmpty()) {
-      rq.print("내용을 입력해주세요.");
+      rq.print("""
+          <script>
+            alert('내용을 입력해주세요.');
+            history.back();
+          </script>
+          """);
       return;
     }
 
@@ -55,13 +70,23 @@ public class ArticleController {
     long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
-      rq.print("올바른 요청이 아닙니다.");
+      rq.print("""
+          <script>
+            alert('올바른 요청이 아닙니다.');
+            history.back();
+          </script>
+          """);
     }
 
     Article article = articleService.findById(id);
 
     if(article == null) {
-      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      rq.print("""
+          <script>
+           alert('%d번 게시물은 존재하지 않습니다.');
+           history.back();
+          </script>
+          """.formatted(id));
       return;
     }
 
@@ -74,13 +99,23 @@ public class ArticleController {
     long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
-      rq.print("올바른 요청이 아닙니다.");
+      rq.print("""
+          <script>
+            alert('올바른 요청이 아닙니다.');
+            history.back();
+          </script>
+          """);
     }
 
     Article article = articleService.findById(id);
 
     if(article == null) {
-      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      rq.print("""
+          <script>
+           alert('%d번 게시물은 존재하지 않습니다.');
+           history.back();
+          </script>
+          """.formatted(id));
       return;
     }
 
@@ -98,13 +133,72 @@ public class ArticleController {
 
     Article article = articleService.findById(id);
 
+    // history.back(); -> 이전 페이지로 이동
     if(article == null) {
-      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      rq.print("""
+          <script>
+           alert('%d번 게시물은 존재하지 않습니다.');
+           history.back();
+          </script>
+          """.formatted(id));
       return;
     }
 
     rq.setAttr("article", article);
 
     rq.view("usr/article/modify");
+  }
+
+  public void doModify(Rq rq) {
+    long id = rq.getLongPathValueByIndex(1, 0);
+
+    if(id == 0) {
+      rq.print("""
+          <script>
+            alert('올바른 요청이 아닙니다.');
+            history.back();
+          </script>
+          """);
+    }
+
+    Article article = articleService.findById(id);
+
+    if(article == null) {
+      rq.print("""
+          <script>
+           alert('%d번 게시물은 존재하지 않습니다.');
+           history.back();
+          </script>
+          """.formatted(id));
+      return;
+    }
+
+    String subject = rq.getParam("subject", "");
+
+    if(subject.trim().isEmpty()) {
+      rq.print("""
+          <script>
+            alert('제목을 입력해주세요.');
+            history.back();
+          </script>
+          """);
+      return;
+    }
+
+    String content = rq.getParam("content", "");
+
+    if(content.trim().isEmpty()) {
+      rq.print("""
+          <script>
+            alert('내용을 입력해주세요.');
+            history.back();
+          </script>
+          """);
+      return;
+    }
+
+    articleService.modify(article.getId(), subject, content);
+
+    rq.print("<div>%d번 게시물이 수정되었습니다.</div>\n".formatted(id));
   }
 }
