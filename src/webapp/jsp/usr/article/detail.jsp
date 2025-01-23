@@ -44,7 +44,7 @@
           <a href="/usr/article/modify/free/${article.id}" class="btn btn-outline btn-primary">
             수정
           </a>
-          <a href="/usr/article/delete/free/${article.id}" class="btn btn-outline btn-secondary">
+          <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/${article.id}" class="btn btn-outline btn-secondary">
             삭제
           </a>
         </div>
