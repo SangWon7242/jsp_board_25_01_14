@@ -16,6 +16,9 @@
   <!-- 테일윈드 css 적용 -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- 제이쿼리 적용 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
   <!-- 공통 js 적용 -->
   <script defer src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 
