@@ -46,7 +46,7 @@
 <section class="article-write">
   <div class="container mx-auto flex justify-center mt-[50px]">
     <div class="max-w-[900px] w-full bg-white shadow-md rounded-lg p-8">
-      <h1 class="text-2xl font-bold text-gray-800 mb-6">게시물 작성</h1>
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">게시물 수정</h1>
       <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;" class="space-y-6">
         <!-- 제목 입력 -->
         <div>
@@ -57,6 +57,7 @@
               name="subject"
               class="input input-bordered w-full"
               placeholder="제목을 입력하세요"
+              value="${article.subject}"
               required>
         </div>
 
@@ -69,15 +70,15 @@
               rows="6"
               class="textarea textarea-bordered w-full"
               placeholder="내용을 입력하세요"
-              required></textarea>
+              required>${article.content}</textarea>
         </div>
 
         <!-- 제출 버튼 -->
         <div class="flex justify-end gap-3">
           <button type="submit" class="btn btn-primary">
-            작성 완료
+            수정 완료
           </button>
-          <a href="/usr/article/list" class="btn btn-secondary">취소</a>
+          <a href="/usr/article/detail/free/${article.id}" class="btn btn-secondary">취소</a>
         </div>
       </form>
     </div>

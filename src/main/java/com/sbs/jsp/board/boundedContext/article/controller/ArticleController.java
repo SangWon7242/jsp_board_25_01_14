@@ -5,7 +5,6 @@ import com.sbs.jsp.board.boundedContext.article.dto.Article;
 import com.sbs.jsp.board.boundedContext.article.service.ArticleService;
 import com.sbs.jsp.board.container.Container;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ArticleController {
@@ -88,5 +87,24 @@ public class ArticleController {
     articleService.delete(article.getId());
 
     rq.print("<div>%d번 게시물이 삭제되었습니다.</div>\n".formatted(id));
+  }
+
+  public void showModify(Rq rq) {
+    long id = rq.getLongPathValueByIndex(1, 0);
+
+    if(id == 0) {
+      rq.print("올바른 요청이 아닙니다.");
+    }
+
+    Article article = articleService.findById(id);
+
+    if(article == null) {
+      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      return;
+    }
+
+    rq.setAttr("article", article);
+
+    rq.view("usr/article/modify");
   }
 }
